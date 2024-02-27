@@ -1,10 +1,10 @@
 class Command {
    constructor(commandType, value) {
-     this.commandType = commandType;
+     this.commandType = commandType; // commandType will be one of the following: MODE_CHANGE, MOVE, or STATUS_CHECK
      if (!commandType) {
        throw Error("Command type required.");
      }
-     this.value = value;
+     this.value = value; // related to the type of commmand
    }
  
  }
