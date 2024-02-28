@@ -12,10 +12,16 @@ class Rover {
    receiveMessage(message) {
       let respond = {
          message: message.name,
-         result: []
-      };
-      return respond;
+		   results: []
+		};
+
+      for (let i = 0; i < message.commands.length; i++) {
+         respond.results.push(message.commands[i]);
+      }
+
+      return respond;   
    } 
 }
+
 
 module.exports = Rover;

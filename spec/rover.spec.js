@@ -16,15 +16,22 @@ describe("Rover class", function() {
 
   //Test 8 - receiveMessage Message Name test
   it('response returned by receiveMessage contains the name of the message', function () {
-    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)]
-    let testMessage = new Message('Test Message', testCommandsArr)
+    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
+    let testMessage = new Message('Test Message', testCommandsArr);
     let testRover = new Rover(9001);
     let testResponse = testRover.receiveMessage(testMessage).message;
-    expect(testResponse).toBe(testMess.name);
+    expect(testResponse).toBe(testMessage.name);
   });
 
 
   //Test 9
+  it('response returned by receiveMessage includes two results if two commands are sent in the message', function () {
+    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
+    let testMessage = new Message('Test Message', testCommandsArr);
+    let testRover = new Rover(9001);
+    let testResponse = testRover.receiveMessage(testMessage);
+    expect(testResponse.results.length).toBe(testCommandsArr.length);
+  });
 
   //Test 10
 
