@@ -75,7 +75,12 @@ describe("Rover class", function() {
 
 
   //Test 13 - testing to see if rover will move to new postion with MOVE command
-  it('responds with the position for the move command', {
-
+  it('responds with the position for the move command', function () {
+    let testCommandsArr = [new Command('MOVE', 360)];
+    let testMessage = new Message('Test 13 - Will. It. Move?!', testCommandsArr);
+    let testRover = new Rover(9001);
+    testRover.receiveMessage(testMessage); // excecutes the receiveMessage function to move the rover position for testing
+    expect(testRover.position).toBe(360);
   });
+  
 });
