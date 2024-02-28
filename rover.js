@@ -10,9 +10,12 @@ class Rover {
    }
 
    receiveMessage(message) {
-      this.message = new Message (name, commands);
-      let results = [];
-   }  
+      let respond = {
+         message: message.name,
+         result: []
+      };
+      return respond;
+   } 
 }
 
 module.exports = Rover;

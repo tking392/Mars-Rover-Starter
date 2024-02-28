@@ -16,12 +16,13 @@ describe("Rover class", function() {
 
   //Test 8 - receiveMessage Message Name test
   it('response returned by receiveMessage contains the name of the message', function () {
-    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
-    let testMessage = new Message("Test Message", testCommandsArr);
+    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)]
+    let testMessage = new Message('Test Message', testCommandsArr)
     let testRover = new Rover(9001);
-    let testResponse = testRover.receiveMessage(testMessage);
-    expect(testResponse.message).toBe("Test Message");
+    let testResponse = testRover.receiveMessage(testMessage).message;
+    expect(testResponse).toBe(testMess.name);
   });
+
 
   //Test 9
 
