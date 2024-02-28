@@ -58,8 +58,8 @@ describe("Rover class", function() {
     let testRover = new Rover(9001);
     let testResponse = testRover.receiveMessage(testMessage);
     expect(testRover.mode).toBe('LOW_POWER');
-
-  })
+    expect(testResponse.results[0].completed).toBe(true);
+  });
 
   //Test 12
 
