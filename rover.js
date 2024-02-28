@@ -31,6 +31,17 @@ class Rover {
             respond.results.push({
                completed: true
             });
+         } else if (message.commands[i].commandType === 'MOVE') {
+            if (this.mode === 'LOW_POWER') {
+               respond.results.push({
+                  completed: false
+               });
+            } else {
+               this.position = message.commands[i].value;
+               respond.results.push({
+                  completed: true
+               });
+            }
          } else { // code above used for Test 9 converted to fit into the if statement
             respond.results.push({
                completed: true

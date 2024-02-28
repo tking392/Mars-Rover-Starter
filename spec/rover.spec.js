@@ -56,13 +56,26 @@ describe("Rover class", function() {
     let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER')];
     let testMessage = new Message('Test 11 Mode Change Working?', testCommandsArr);
     let testRover = new Rover(9001);
-    let testResponse = testRover.receiveMessage(testMessage);
-    expect(testRover.mode).toBe('LOW_POWER');
-    expect(testResponse.results[0].completed).toBe(true);
+    let testResponse = testRover.receiveMessage(testMessage); // looking for MODE_CHANGE to LOW_POWER
+    expect(testRover.mode).toBe('LOW_POWER'); //looking at first command result to come back true from changing MODES
+    expect(testResponse.results[0].completed).toBeTrue;
   });
 
-  //Test 12
+  //Test 12 - testing Move command to make sure rover doesn't move while in LOW_POWER mode
+  it('responds with a false completed value when attempting to move in LOW_POWER mode', function () {
+    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), ('MOVE', 360)];
+    let testMessage = new Message('Test 12 will it MOVE while in LOW_POWER?', testCommandsArr);
+    let testRover = new Rover(9001);
+    let testResponse = testRover.receiveMessage(testMessage);
+    expect(testRover.mode).toBe('LOW_POWER'); // looking for MODE_CHANGE to LOW_POWER
+    expect(testResponse.results[0].completed).toBeTrue; //looking at first command result to come back true from changing MODES
+    expect(testRover.position).toBe(9001); // confirming that the position hasn't changed
+    expect(testResponse.results[1].completed).toBeFalse; // will make sure that the rover hasn't moved when trying to move while in LOW_POWER
+  });
 
-  //Test 13
 
+  //Test 13 - testing to see if rover will move to new postion with MOVE command
+  it('responds with the position for the move command', {
+
+  });
 });
