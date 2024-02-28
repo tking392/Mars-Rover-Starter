@@ -34,6 +34,38 @@ describe("Rover class", function() {
   });
 
   //Test 10
+  it('responds correctly to the status check command', function () {
+    let testCommandsArr = [new Command('STATUS_CHECK')];
+    let testMessage = new Message('Test Message', testCommandsArr);
+    let testRover = new Rover(9001);
+    let testResponse = testRover.receiveMessage(testMessage).results[0];
+    let testAnswers = {
+      completed: true,
+      roverStatus: {
+        mode: 'NORMAL',
+        generatorWatts: 110,
+        position: 9001
+      }
+    }
+    expect(testResponse).toEqual(testAnswers);
+  });
+
+
+  // it("responds correctly to status check command", function() {
+  //   let commands = [new Command('STATUS_CHECK')]
+  //   let message = new Message('test 10 name', commands)
+  //   let rover = new Rover(2000);
+  //   let actual = rover.receiveMessage(message).results[0];
+  //   let expected = {
+  //     completed: true,
+  //     roverStatus: {
+  //       mode: 'NORMAL',
+  //       generatorWatts: 110,
+  //       position: 2000
+  //     }
+  //   }
+  //   expect(actual).toEqual(expected);
+  // });
 
   //Test 11
 
