@@ -17,26 +17,26 @@ describe("Rover class", function() {
   //Test 8 - receiveMessage Message Name test
   it('response returned by receiveMessage contains the name of the message', function () {
     let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
-    let testMessage = new Message('Test Message', testCommandsArr);
+    let testMessage = new Message('Test 8 Message', testCommandsArr);
     let testRover = new Rover(9001);
     let testResponse = testRover.receiveMessage(testMessage).message;
     expect(testResponse).toBe(testMessage.name);
   });
 
 
-  //Test 9
+  //Test 9 - receiveMessage is receving commands correctly
   it('response returned by receiveMessage includes two results if two commands are sent in the message', function () {
     let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
-    let testMessage = new Message('Test Message', testCommandsArr);
+    let testMessage = new Message('Test 9 Message', testCommandsArr);
     let testRover = new Rover(9001);
     let testResponse = testRover.receiveMessage(testMessage);
     expect(testResponse.results.length).toBe(testCommandsArr.length);
   });
 
-  //Test 10
+  //Test 10 - Status Check command is working when input into Rover
   it('responds correctly to the status check command', function () {
     let testCommandsArr = [new Command('STATUS_CHECK')];
-    let testMessage = new Message('Test Message', testCommandsArr);
+    let testMessage = new Message('Test 10 Status Check Working?', testCommandsArr);
     let testRover = new Rover(9001);
     let testResponse = testRover.receiveMessage(testMessage).results[0];
     let testAnswers = {
@@ -51,10 +51,13 @@ describe("Rover class", function() {
   });
 
 
-  //Test 11
+  //Test 11 - Mode Change command is working when input into Rover
   it('responds correctly to the mode change command', function () {
+    let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER')];
+    let testMessage = new Message('Test 11 Mode Change Working?', testCommandsArr);
+    let testRover = new Rover(9001);
+    let testResponse = testRover.receiveMessage(testMessage).results[0];
 
-    
   })
 
   //Test 12

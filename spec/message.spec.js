@@ -13,14 +13,14 @@ describe("Message class", function() {
 
     //Test 5 - Message name test 
     it("constructor sets name", function () {
-        let testName = new Message('Testing Message Property');
-        expect(testName.name).toBe('Testing Message Property');
+        let testName = new Message('Test 5 Message Name Property');
+        expect(testName.name).toBe('Test 5 Message Name Property');
     });
 
     //Test 6 - commands test
     it("contains a command array passed into the constructor as the 2nd argument", function () {
         let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command ('MOVE', 1234)];
-        let testMessage = new Message("Test Message", testCommandsArr);
+        let testMessage = new Message("Test 6 Message Name", testCommandsArr);
         expect(testMessage.commands).toBe(testCommandsArr); 
     });
 
