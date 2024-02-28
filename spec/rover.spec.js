@@ -56,7 +56,8 @@ describe("Rover class", function() {
     let testCommandsArr = [new Command('MODE_CHANGE', 'LOW_POWER')];
     let testMessage = new Message('Test 11 Mode Change Working?', testCommandsArr);
     let testRover = new Rover(9001);
-    let testResponse = testRover.receiveMessage(testMessage).results[0];
+    let testResponse = testRover.receiveMessage(testMessage);
+    expect(testRover.mode).toBe('LOW_POWER');
 
   })
 

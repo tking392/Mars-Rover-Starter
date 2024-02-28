@@ -26,7 +26,12 @@ class Rover {
                   position: this.position
                }
             });
-         } else { // new code to satisfy Test 9 
+         } else if (message.commands[i].commandType === 'MODE_CHANGE') {
+            this.mode = message.commands[i].value;
+            respond.results.push({
+               completed: true
+            });
+         } else { // code above used for Test 9 converted to fit into the if statement
             respond.results.push({
                completed: true
             });
