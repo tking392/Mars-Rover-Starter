@@ -9,9 +9,12 @@ const Command = require('../command.js');
 describe("Rover class", function() {
   // 7 tests here!
 
-  //Test 7 - test for Rover position
+  //Test 7 - test for Rover position - added code to evaluate position, mode ,and generatorWatts
   it('constructor sets position and default values for mode and generatorWatts', function () {
-    expect( function() { new Rover();}).toThrow(new Error('Rover position required.'));
+    let testRover = new Rover(9001);
+    expect(testRover.position).toBe(9001);
+    expect(testRover.mode).toBe('NORMAL');
+    expect(testRover.generatorWatts).toBe(110);
   });  
 
   //Test 8 - receiveMessage Message Name test
